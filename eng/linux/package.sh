@@ -3,7 +3,11 @@
 set -eu
 . "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
-if is_musl_based_distro; then
+DIST_TARGET=x64
+if is_aarch64_distro; then
+  NET_RUNTIME="linux-arm64"
+  DIST_TARGET=arm64
+elif is_musl_based_distro; then
   NET_RUNTIME="linux-musl-x64"
 else
   NET_RUNTIME="linux-x64"

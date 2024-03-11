@@ -14,6 +14,10 @@ is_musl_based_distro() {
   (ldd --version 2>&1 || true) | grep -q musl
 }
 
+is_aarch64_distro() {
+  uname -a | grep "aarch64" > /dev/null
+}
+
 copy_generic_files() {
   local output="${1}"
 
